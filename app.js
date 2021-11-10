@@ -19,6 +19,8 @@ const app = express();
 
 // global middlewares
 // implement CORS
+app.set('trust proxy', 1);
+
 app.use(cors());
 // access-control-allow-origin
 app.options('*', cors());
