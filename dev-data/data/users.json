@@ -1,0 +1,37 @@
+[
+  {
+    "_id": "6187315e0aac4c800f16a6d8",
+    "name": "Emmanuel Adebayo",
+    "email": "admin@example.com",
+    "role": "admin",
+    "password": "$2a$12$oeZe7iCeK.ym.4nFS3MuT.QhoX3dYzgOk/AqF2IbUEcllLCgqGkLq"
+  },
+  {
+    "_id": "6185676f9027a3132fe8b2e1",
+    "name": "John Doe",
+    "email": "jdoe@example.com",
+    "role": "user",
+    "password": "$2a$12$NVZm7CW8G6FWcdc/Wkjg9OnnLkV6c60lT4pbLz2F/6VnesaGraZ8y"
+  },
+  {
+    "_id": "6185a7671ca7c6ca91b6384c",
+    "name": "Mary Doe",
+    "email": "mdoe@example.com",
+    "role": "user",
+    "password": "$2a$12$3cArY.1IOFSsB0MqTeB93uhpoW0wsZ7PCHUjCLmGrojRlAd83cMs2"
+  },
+  {
+    "_id": "6185abd24718682c0b835101",
+    "name": "Alice Doe",
+    "email": "alice@example.com",
+    "role": "user",
+    "password": "$2a$12$1nRpzL37FPUdic/AyPhNf.KGvX6CEioRhoPUsecW/0FvfuBkyINbW"
+  },
+  {
+    "_id": "6186e044f95d132463e99c47",
+    "name": "Chris Vega",
+    "email": "chris@example.com",
+    "role": "user",
+    "password": "$2a$12$4cr25mSGEfLaRc6quZz9T.inSFE.a/p7gsob5DRySirFyyUaDbBQi"
+  }
+]
