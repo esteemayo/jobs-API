@@ -170,7 +170,7 @@ paths:
           headers: {}
       deprecated: false
     parameters: []
-  /jobs/details{slug}:
+  /jobs/details/{slug}:
     parameters:
       - in: path
         name: slug
