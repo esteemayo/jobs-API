@@ -69,6 +69,7 @@ app.use((req, res, next) => {
     next();
 });
 
+// swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.get('/', (req, res) => {

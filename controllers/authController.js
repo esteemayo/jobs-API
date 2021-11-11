@@ -13,18 +13,16 @@ const BadRequestError = require('../errors/badRequest');
 const asyncMiddleware = require('../utils/asyncMiddleware');
 const UnauthenticatedError = require('../errors/unauthenticated');
 
-const createSendToken = (user, statusCode, res) => {
+const createSendToken = (user, statusCode, req, res) => {
     const token = user.generateAuthToken();
 
-    const cookieOptions = {
+    res.cookie('jwtToken', token, {
         expires: new Date(Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000),
         httpOnly: true,
-    };
+        secure: req.secure || req.headers['x-forwarded-proto'] === 'https',
+    });
 
-    if (process.env.NODE_ENV === 'production') cookieOptions.secure = true;
-
-    res.cookie('jwtToken', token, cookieOptions);
-
+    // remove password from output
     user.password = undefined;
 
     res.status(statusCode).json({
@@ -39,7 +37,7 @@ exports.register = asyncMiddleware(async (req, res, next) => {
 
     const user = await User.create({ ...userInputs });
 
-    createSendToken(user, StatusCodes.CREATED, res);
+    createSendToken(user, StatusCodes.CREATED, req, res);
 });
 
 exports.login = asyncMiddleware(async (req, res, next) => {
@@ -55,7 +53,7 @@ exports.login = asyncMiddleware(async (req, res, next) => {
         return next(new UnauthenticatedError('Incorrect username or password'));
     }
 
-    createSendToken(user, StatusCodes.OK, res);
+    createSendToken(user, StatusCodes.OK, req, res);
 });
 
 exports.protect = asyncMiddleware(async (req, res, next) => {
@@ -170,7 +168,7 @@ exports.resetPassword = asyncMiddleware(async (req, res, next) => {
     user.resetPasswordExpires = undefined;
     await user.save();
 
-    createSendToken(user, StatusCodes.OK, res);
+    createSendToken(user, StatusCodes.OK, req, res);
 });
 
 exports.updatePassword = asyncMiddleware(async (req, res, next) => {
@@ -184,5 +182,5 @@ exports.updatePassword = asyncMiddleware(async (req, res, next) => {
     user.confirmPassword = req.body.confirmPassword;
     await user.save();
 
-    createSendToken(user, StatusCodes.OK, res);
+    createSendToken(user, StatusCodes.OK, req, res);
 });

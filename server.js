@@ -36,3 +36,11 @@ process.on('unhandledRejection', (err) => {
         process.exit(1);
     });
 });
+
+// SIGTERN causes a program to stop running so it doesn't need process.exit(1)
+process.on('SIGTERM', () => {
+    console.log('👏 SIGTERM RECEIVED!, Shutting down gracefully...');
+    server.close(() => {
+        console.log('Process terminated! 🔥');
+    });
+});
