@@ -7,6 +7,10 @@ const mongoSanitize = require('express-mongo-sanitize');
 const xss = require('xss-clean');
 const hpp = require('hpp');
 const compression = require('compression');
+const swaggerUi = require('swagger-ui-express');
+const YAML = require('yamljs');
+
+const swaggerDocument = YAML.load('./swagger.yaml');
 
 // routes
 const jobRouter = require('./routes/jobs');
@@ -63,6 +67,12 @@ app.use((req, res, next) => {
     // console.log(req.headers);
 
     next();
+});
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+app.get('/', (req, res) => {
+    res.send('<h1>Jobs API</h1><a href="/api-docs">Documentation</a>');
 });
 
 // api routes
