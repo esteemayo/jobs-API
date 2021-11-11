@@ -22,9 +22,9 @@ const globalErrorHandler = require('./controllers/errorControllers');
 const app = express();
 
 // global middlewares
-// implement CORS
 app.set('trust proxy', 1);
 
+// implement CORS
 app.use(cors());
 // access-control-allow-origin
 app.options('*', cors());
