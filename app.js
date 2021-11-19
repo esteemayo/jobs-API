@@ -9,6 +9,7 @@ const hpp = require('hpp');
 const compression = require('compression');
 const swaggerUi = require('swagger-ui-express');
 const YAML = require('yamljs');
+const cookieParser = require('cookie-parser');
 
 const swaggerDocument = YAML.load('./swagger.yaml');
 
@@ -49,6 +50,9 @@ app.use('/api', limiter);
 // body parser, reading data from body into req.body
 app.use(express.json({ limit: '10kb' }));
 
+// cookie parser middleware
+app.use(cookieParser());
+
 // data sanitization against NoSQL query injection
 app.use(mongoSanitize());
 
@@ -65,6 +69,7 @@ app.use(compression());
 app.use((req, res, next) => {
     req.requestTime = new Date().toISOString();
     // console.log(req.headers);
+    // console.log(req.cookies);
 
     next();
 });
