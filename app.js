@@ -35,14 +35,14 @@ app.use(helmet());
 
 // development logging
 if (app.get('env') === 'development') {
-    app.use(morgan('dev'));
+  app.use(morgan('dev'));
 }
 
 // limit request from same API
 const limiter = rateLimit({
-    max: 100,
-    windowMs: 60 * 60 * 1000,
-    message: 'Too many requests from this IP, Please try again in an hour!',
+  max: 100,
+  windowMs: 60 * 60 * 1000,
+  message: 'Too many requests from this IP, Please try again in an hour!',
 });
 
 app.use('/api', limiter);
@@ -67,18 +67,18 @@ app.use(compression());
 
 // test middleware
 app.use((req, res, next) => {
-    req.requestTime = new Date().toISOString();
-    // console.log(req.headers);
-    // console.log(req.cookies);
+  req.requestTime = new Date().toISOString();
+  // console.log(req.headers);
+  // console.log(req.cookies);
 
-    next();
+  next();
 });
 
 // swagger
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.get('/', (req, res) => {
-    res.send('<h1>Jobs API</h1><a href="/api-docs">Documentation</a>');
+  res.send('<h1>Jobs API</h1><a href="/api-docs">Documentation</a>');
 });
 
 // api routes
@@ -86,7 +86,7 @@ app.use('/api/v1/jobs', jobRouter);
 app.use('/api/v1/users', userRouter);
 
 app.all('*', (req, res, next) => {
-    next(new NotFoundError(`Can't find ${req.originalUrl} on this server`));
+  next(new NotFoundError(`Can't find ${req.originalUrl} on this server`));
 });
 
 app.use(globalErrorHandler);

@@ -24,20 +24,14 @@ router.patch('/update-user', userController.updateMe);
 router.delete('/delete-user', userController.deleteMe);
 
 router
-    .route('/')
-    .get(userController.getAllUsers)
-    .post(userController.createUser);
+  .route('/')
+  .get(userController.getAllUsers)
+  .post(userController.createUser);
 
 router
-    .route('/:id')
-    .get(userController.getUser)
-    .patch(
-        authController.restrictTo('admin'),
-        userController.updateUser,
-    )
-    .delete(
-        authController.restrictTo('admin'),
-        userController.deleteUser,
-    );
+  .route('/:id')
+  .get(userController.getUser)
+  .patch(authController.restrictTo('admin'), userController.updateUser)
+  .delete(authController.restrictTo('admin'), userController.deleteUser);
 
 module.exports = router;
