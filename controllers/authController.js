@@ -12,27 +12,7 @@ const ForbiddenError = require('../errors/forbidden');
 const BadRequestError = require('../errors/badRequest');
 const asyncMiddleware = require('../utils/asyncMiddleware');
 const UnauthenticatedError = require('../errors/unauthenticated');
-
-const createSendToken = (user, statusCode, req, res) => {
-  const token = user.generateAuthToken();
-
-  res.cookie('jwtToken', token, {
-    expires: new Date(
-      Date.now() + process.env.JWT_COOKIE_EXPIRES_IN * 24 * 60 * 60 * 1000
-    ),
-    httpOnly: true,
-    secure: req.secure || req.headers['x-forwarded-proto'] === 'https',
-  });
-
-  // remove password from output
-  user.password = undefined;
-
-  res.status(statusCode).json({
-    status: 'success',
-    token,
-    user,
-  });
-};
+const createSendToken = require('../middlewares/createSendToken');
 
 exports.register = asyncMiddleware(async (req, res, next) => {
   const userInputs = _.pick(req.body, [
