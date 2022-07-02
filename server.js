@@ -15,14 +15,18 @@ const app = require('./app');
 const dbLocal = process.env.DATABASE_LOCAL;
 
 // atlas mongo uri
-const db = process.env.DATABASE.replace(
+const mongoURI = process.env.DATABASE.replace(
   '<PASSWORD>',
   process.env.DATABASE_PASSWORD
 );
 
+const devEnv = process.env.NODE_ENV !== 'production';
+
 mongoose
-  .connect(db)
-  .then(() => console.log(`MongoDB Connected → ${db}`.gray.bold));
+  .connect(`${devEnv ? dbLocal : mongoURI}`)
+  .then(() =>
+    console.log(`MongoDB Connected → ${devEnv ? dbLocal : mongoURI}`.gray.bold)
+  );
 
 app.set('port', process.env.PORT || 3333);
 
