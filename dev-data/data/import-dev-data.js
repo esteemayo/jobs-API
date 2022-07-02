@@ -13,15 +13,19 @@ dotenv.config({ path: './variables.env' });
 const dbLocal = process.env.DATABASE_LOCAL;
 
 // atlas mongo uri
-const db = process.env.DATABASE.replace(
+const mongoURI = process.env.DATABASE.replace(
   '<PASSWORD>',
   process.env.DATABASE_PASSWORD
 );
 
+const devEnv = process.env.NODE_ENV !== 'production';
+
 // MongoDB connection
 mongoose
-  .connect(db)
-  .then(() => console.log(`MongoDB Connected → ${db}`.gray.bold))
+  .connect(`${devEnv ? dbLocal : mongoURI}`)
+  .then(() =>
+    console.log(`MongoDB Connected → ${devEnv ? dbLocal : mongoURI}`.gray.bold)
+  )
   .catch((err) =>
     console.log(`Could not connect to MongoDB → ${err}`.red.bold)
   );
