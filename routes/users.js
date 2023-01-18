@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 
-const authController = require('../controllers/authController');
-const userController = require('../controllers/userController');
+import * as authController from '../controllers/authController.js';
+import * as userController from '../controllers/userController.js';
 
 const router = express.Router();
 
@@ -34,4 +34,4 @@ router
   .patch(authController.restrictTo('admin'), userController.updateUser)
   .delete(authController.restrictTo('admin'), userController.deleteUser);
 
-module.exports = router;
+export default router;
