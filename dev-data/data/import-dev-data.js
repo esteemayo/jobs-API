@@ -6,29 +6,12 @@ import 'colors';
 // models
 import Job from '../../models/Job.js';
 import User from '../../models/User.js';
+import connectDB from '../../config/db.js';
 
 dotenv.config({ path: './variables.env' });
 
-// db local
-const dbLocal = process.env.DATABASE_LOCAL;
-
-// atlas mongo uri
-const mongoURI = process.env.DATABASE.replace(
-  '<PASSWORD>',
-  process.env.DATABASE_PASSWORD
-);
-
-const devEnv = process.env.NODE_ENV !== 'production';
-
 // MongoDB connection
-mongoose
-  .connect(`${devEnv ? dbLocal : mongoURI}`)
-  .then(() =>
-    console.log(`MongoDB Connected → ${devEnv ? dbLocal : mongoURI}`.gray.bold)
-  )
-  .catch((err) =>
-    console.log(`Could not connect to MongoDB → ${err}`.red.bold)
-  );
+connectDB();
 
 // read JSON file
 const jobs = JSON.parse(fs.readFileSync(`${__dirname}/jobs.json`, 'utf-8'));
