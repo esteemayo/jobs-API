@@ -57,6 +57,6 @@ jobSchema.pre(/^find/, function (next) {
   next();
 });
 
-const Job = mongoose.model('Job', jobSchema);
+const Job = mongoose.models.Job || mongoose.model('Job', jobSchema);
 
 export default Job;
