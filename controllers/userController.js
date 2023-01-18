@@ -3,8 +3,8 @@ import { StatusCodes } from 'http-status-codes';
 
 import Job from '../models/Job.js';
 import User from '../models/User.js';
-import factory from './handlerFactory.js';
 import BadRequestError from '../errors/badRequest.js';
+import factory from './handlerFactory.js';
 import asyncMiddleware from '../utils/asyncMiddleware.js';
 
 exports.updateMe = asyncMiddleware(async (req, res, next) => {
