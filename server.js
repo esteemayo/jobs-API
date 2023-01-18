@@ -1,6 +1,4 @@
-const mongoose = require('mongoose');
-const dotenv = require('dotenv');
-require('colors');
+import 'colors';
 
 process.on('uncaughtException', (err) => {
   console.log('UNCAUGHT EXCEPTION 🔥! Shutting down gracefully...'.red.bold);
@@ -8,29 +6,13 @@ process.on('uncaughtException', (err) => {
   process.exit(1);
 });
 
-dotenv.config({ path: './variables.env' });
-const app = require('./app');
-
-// db local
-const dbLocal = process.env.DATABASE_LOCAL;
-
-// atlas mongo uri
-const mongoURI = process.env.DATABASE.replace(
-  '<PASSWORD>',
-  process.env.DATABASE_PASSWORD
-);
-
-const devEnv = process.env.NODE_ENV !== 'production';
-
-mongoose
-  .connect(`${devEnv ? dbLocal : mongoURI}`)
-  .then(() =>
-    console.log(`MongoDB Connected → ${devEnv ? dbLocal : mongoURI}`.gray.bold)
-  );
+import app from './app.js';
+import connectDB from './config/db.js';
 
 app.set('port', process.env.PORT || 3333);
 
-const server = app.listen(app.get('port'), () => {
+const server = app.listen(app.get('port'), async () => {
+  await connectDB();
   console.log(`App listening on port → ${server.address().port}`.blue.bold);
 });
 
