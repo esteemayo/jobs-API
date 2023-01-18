@@ -11,6 +11,9 @@ import connectDB from '../../config/db.js';
 
 dotenv.config({ path: './variables.env' });
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 // MongoDB connection
 connectDB();
 
