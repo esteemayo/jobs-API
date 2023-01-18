@@ -1,8 +1,8 @@
-const { StatusCodes } = require('http-status-codes');
+import { StatusCodes } from 'http-status-codes';
 
-const APIFeatures = require('../utils/apiFeatures');
-const NotFoundError = require('../errors/notFound');
-const asyncMiddleware = require('../utils/asyncMiddleware');
+import APIFeatures from '../utils/apiFeatures.js';
+import NotFoundError from '../errors/notFound.js';
+import asyncMiddleware from '../utils/asyncMiddleware.js';
 
 exports.getAll = (Model) =>
   asyncMiddleware(async (req, res, next) => {
