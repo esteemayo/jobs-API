@@ -1,10 +1,10 @@
-const { StatusCodes } = require('http-status-codes');
+import { StatusCodes } from 'http-status-codes';
 
-const Job = require('../models/Job');
-const APIFeatures = require('../utils/apiFeatures');
-const NotFoundError = require('../errors/notFound');
-const BadRequestError = require('../errors/badRequest');
-const asyncMiddleware = require('../utils/asyncMiddleware');
+import Job from '../models/Job.js';
+import APIFeatures from '../utils/apiFeatures.js';
+import NotFoundError from '../errors/notFound.js';
+import BadRequestError from '../errors/badRequest.js';
+import asyncMiddleware from '../utils/asyncMiddleware';
 
 exports.getAllJobs = asyncMiddleware(async (req, res, next) => {
   const features = new APIFeatures(
