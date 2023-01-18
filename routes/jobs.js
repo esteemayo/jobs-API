@@ -1,7 +1,7 @@
-const express = require('express');
+import express from 'express';
 
-const jobController = require('../controllers/jobController');
-const authController = require('../controllers/authController');
+import * as jobController from '../controllers/jobController.js';
+import * as authController from '../controllers/authController.js';
 
 const router = express.Router();
 
@@ -17,4 +17,4 @@ router
   .patch(jobController.updateJob)
   .delete(jobController.deleteJob);
 
-module.exports = router;
+export default router;
