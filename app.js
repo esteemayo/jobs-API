@@ -1,23 +1,25 @@
-import express  from 'express';
-import morgan  from 'morgan';
-import cors  from 'cors';
-import helmet  from 'helmet';
-import rateLimit  from 'express-rate-limit';
-import mongoSanitize  from 'express-mongo-sanitize';
-import xss  from 'xss-clean';
-import hpp  from 'hpp';
-import compression  from 'compression';
-import swaggerUi  from 'swagger-ui-express';
-import YAML  from 'yamljs';
-import cookieParser  from 'cookie-parser';
-
-const swaggerDocument = YAML.load('./swagger.yaml');
+import express from 'express';
+import morgan from 'morgan';
+import cors from 'cors';
+import helmet from 'helmet';
+import rateLimit from 'express-rate-limit';
+import mongoSanitize from 'express-mongo-sanitize';
+import xss from 'xss-clean';
+import hpp from 'hpp';
+import compression from 'compression';
+import swaggerUi from 'swagger-ui-express';
+import YAML from 'yamljs';
+import cookieParser from 'cookie-parser';
+import dotenv from 'dotenv';
 
 // routes
-import jobRouter  from './routes/jobs.js';
-import userRouter  from './routes/users.js';
-import NotFoundError  from './errors/notFound.js';
-import globalErrorHandler  from './controllers/errorControllers.js';
+import jobRouter from './routes/jobs.js';
+import userRouter from './routes/users.js';
+import NotFoundError from './errors/notFound.js';
+import globalErrorHandler from './controllers/errorControllers.js';
+
+dotenv.config({ path: './variables.env' });
+const swaggerDocument = YAML.load('./swagger.yaml');
 
 // start express app
 const app = express();
