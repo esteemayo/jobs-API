@@ -1,5 +1,5 @@
-const mongoose = require('mongoose');
-const slugify = require('slugify');
+import slugify from 'slugify';
+import mongoose from 'mongoose';
 
 const jobSchema = new mongoose.Schema(
   {
@@ -59,4 +59,4 @@ jobSchema.pre(/^find/, function (next) {
 
 const Job = mongoose.model('Job', jobSchema);
 
-module.exports = Job;
+export default Job;
