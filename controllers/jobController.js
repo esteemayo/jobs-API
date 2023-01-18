@@ -6,7 +6,7 @@ import NotFoundError from '../errors/notFound.js';
 import BadRequestError from '../errors/badRequest.js';
 import asyncMiddleware from '../utils/asyncMiddleware';
 
-exports.getAllJobs = asyncMiddleware(async (req, res, next) => {
+export const getAllJobs = asyncMiddleware(async (req, res, next) => {
   const features = new APIFeatures(
     Job.find({ createdBy: req.user.id }),
     req.query
@@ -26,7 +26,7 @@ exports.getAllJobs = asyncMiddleware(async (req, res, next) => {
   });
 });
 
-exports.getJob = asyncMiddleware(async (req, res, next) => {
+export const getJob = asyncMiddleware(async (req, res, next) => {
   const {
     user: { id: userID },
     params: { id: jobID },
@@ -47,7 +47,7 @@ exports.getJob = asyncMiddleware(async (req, res, next) => {
   });
 });
 
-exports.getJobBySlug = asyncMiddleware(async (req, res, next) => {
+export const getJobBySlug = asyncMiddleware(async (req, res, next) => {
   const {
     user: { id: userID },
     params: { slug },
@@ -68,7 +68,7 @@ exports.getJobBySlug = asyncMiddleware(async (req, res, next) => {
   });
 });
 
-exports.createJob = asyncMiddleware(async (req, res, next) => {
+export const createJob = asyncMiddleware(async (req, res, next) => {
   if (!req.body.createdBy) req.body.createdBy = req.user.id;
 
   const job = await Job.create({ ...req.body });
@@ -79,7 +79,7 @@ exports.createJob = asyncMiddleware(async (req, res, next) => {
   });
 });
 
-exports.updateJob = asyncMiddleware(async (req, res, next) => {
+export const updateJob = asyncMiddleware(async (req, res, next) => {
   const {
     user: { id: userID },
     params: { id: jobID },
@@ -111,7 +111,7 @@ exports.updateJob = asyncMiddleware(async (req, res, next) => {
   });
 });
 
-exports.deleteJob = asyncMiddleware(async (req, res, next) => {
+export const deleteJob = asyncMiddleware(async (req, res, next) => {
   const {
     user: { id: userID },
     params: { id: jobID },
