@@ -19,8 +19,7 @@ const connectDB = async () => {
     const conn = await mongoose.connect(db);
     console.log(`MongoDB Connected → ${conn.connection.port}`.gray.bold);
   } catch (err) {
-    console.log(err);
-    process.exit(1);
+    throw err
   }
 };
 
