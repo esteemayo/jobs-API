@@ -14,7 +14,7 @@ import asyncMiddleware from '../utils/asyncMiddleware.js';
 import UnauthenticatedError from '../errors/unauthenticated.js';
 import createSendToken from '../middlewares/createSendToken.js';
 
-exports.register = asyncMiddleware(async (req, res, next) => {
+export const register = asyncMiddleware(async (req, res, next) => {
   const userInputs = _.pick(req.body, [
     'name',
     'email',
@@ -29,7 +29,7 @@ exports.register = asyncMiddleware(async (req, res, next) => {
   createSendToken(user, StatusCodes.CREATED, req, res);
 });
 
-exports.login = asyncMiddleware(async (req, res, next) => {
+export const login = asyncMiddleware(async (req, res, next) => {
   const { email, password } = req.body;
 
   if (!email || !password) {
@@ -45,7 +45,7 @@ exports.login = asyncMiddleware(async (req, res, next) => {
   createSendToken(user, StatusCodes.OK, req, res);
 });
 
-exports.protect = asyncMiddleware(async (req, res, next) => {
+export const protect = asyncMiddleware(async (req, res, next) => {
   // getting token and check if it's there
   let token;
 
@@ -92,7 +92,7 @@ exports.protect = asyncMiddleware(async (req, res, next) => {
   next();
 });
 
-exports.restrictTo = (...roles) => {
+export const restrictTo = (...roles) => {
   return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
       return next(
@@ -103,7 +103,7 @@ exports.restrictTo = (...roles) => {
   };
 };
 
-exports.forgotPassword = asyncMiddleware(async (req, res, next) => {
+export const forgotPassword = asyncMiddleware(async (req, res, next) => {
   const { email } = req.body;
 
   const user = await User.findOne({ email });
@@ -159,7 +159,7 @@ exports.forgotPassword = asyncMiddleware(async (req, res, next) => {
   }
 });
 
-exports.resetPassword = asyncMiddleware(async (req, res, next) => {
+export const resetPassword = asyncMiddleware(async (req, res, next) => {
   const hashedToken = crypto
     .createHash('sha256')
     .update(req.params.token)
@@ -183,7 +183,7 @@ exports.resetPassword = asyncMiddleware(async (req, res, next) => {
   createSendToken(user, StatusCodes.OK, req, res);
 });
 
-exports.updatePassword = asyncMiddleware(async (req, res, next) => {
+export const updatePassword = asyncMiddleware(async (req, res, next) => {
   const user = await User.findById(req.user.id).select('+password');
 
   if (!(await user.comparePassword(req.body.currentPassword))) {
