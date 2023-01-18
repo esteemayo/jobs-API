@@ -1,19 +1,18 @@
-const _ = require('lodash');
-const { StatusCodes } = require('http-status-codes');
+import _ from 'lodash';
+import { StatusCodes } from 'http-status-codes';
 
-const Job = require('../models/Job');
-const User = require('../models/User');
-const factory = require('./handlerFactory');
-const BadRequestError = require('../errors/badRequest');
-const asyncMiddleware = require('../utils/asyncMiddleware');
+import Job from '../models/Job.js';
+import User from '../models/User.js';
+import factory from './handlerFactory.js';
+import BadRequestError from '../errors/badRequest.js';
+import asyncMiddleware from '../utils/asyncMiddleware.js';
 
 exports.updateMe = asyncMiddleware(async (req, res, next) => {
   const { password, confirmPassword } = req.body;
   if (password || confirmPassword) {
     return next(
       new BadRequestError(
-        `This route is not for password updates. Please use update ${
-          req.protocol
+        `This route is not for password updates. Please use update ${req.protocol
         }://${req.get('host')}/api/v1/users/update-user-password`
       )
     );
