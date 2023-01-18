@@ -1,23 +1,23 @@
-const express = require('express');
-const morgan = require('morgan');
-const cors = require('cors');
-const helmet = require('helmet');
-const rateLimit = require('express-rate-limit');
-const mongoSanitize = require('express-mongo-sanitize');
-const xss = require('xss-clean');
-const hpp = require('hpp');
-const compression = require('compression');
-const swaggerUi = require('swagger-ui-express');
-const YAML = require('yamljs');
-const cookieParser = require('cookie-parser');
+import express  from 'express';
+import morgan  from 'morgan';
+import cors  from 'cors';
+import helmet  from 'helmet';
+import rateLimit  from 'express-rate-limit';
+import mongoSanitize  from 'express-mongo-sanitize';
+import xss  from 'xss-clean';
+import hpp  from 'hpp';
+import compression  from 'compression';
+import swaggerUi  from 'swagger-ui-express';
+import YAML  from 'yamljs';
+import cookieParser  from 'cookie-parser';
 
 const swaggerDocument = YAML.load('./swagger.yaml');
 
 // routes
-const jobRouter = require('./routes/jobs');
-const userRouter = require('./routes/users');
-const NotFoundError = require('./errors/notFound');
-const globalErrorHandler = require('./controllers/errorControllers');
+import jobRouter  from './routes/jobs.js';
+import userRouter  from './routes/users.js';
+import NotFoundError  from './errors/notFound.js';
+import globalErrorHandler  from './controllers/errorControllers.js';
 
 // start express app
 const app = express();
@@ -91,4 +91,4 @@ app.all('*', (req, res, next) => {
 
 app.use(globalErrorHandler);
 
-module.exports = app;
+export default app;
