@@ -1,4 +1,4 @@
-module.exports = (fn) => {
+const asyncMiddleware = (fn) => {
   return async (req, res, next) => {
     try {
       await fn(req, res, next);
@@ -7,3 +7,5 @@ module.exports = (fn) => {
     }
   };
 };
+
+export default asyncMiddleware;
