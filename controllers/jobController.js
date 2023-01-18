@@ -4,7 +4,7 @@ import Job from '../models/Job.js';
 import APIFeatures from '../utils/apiFeatures.js';
 import BadRequestError from '../errors/badRequest.js';
 import NotFoundError from '../errors/notFound.js';
-import asyncMiddleware from '../utils/asyncMiddleware';
+import asyncMiddleware from '../utils/asyncMiddleware.js';
 
 export const getAllJobs = asyncMiddleware(async (req, res, next) => {
   const features = new APIFeatures(
