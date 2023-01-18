@@ -2,8 +2,8 @@ import { StatusCodes } from 'http-status-codes';
 
 import Job from '../models/Job.js';
 import APIFeatures from '../utils/apiFeatures.js';
-import NotFoundError from '../errors/notFound.js';
 import BadRequestError from '../errors/badRequest.js';
+import NotFoundError from '../errors/notFound.js';
 import asyncMiddleware from '../utils/asyncMiddleware';
 
 export const getAllJobs = asyncMiddleware(async (req, res, next) => {
