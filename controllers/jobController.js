@@ -50,7 +50,7 @@ export const getJobById = asyncMiddleware(async (req, res, next) => {
 
 export const getJobBySlug = asyncMiddleware(async (req, res, next) => {
   const {
-    user: { id: userID },
+    user: { id: userId },
     params: { slug },
   } = req;
 
