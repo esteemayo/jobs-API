@@ -96,7 +96,7 @@ export const updateJob = asyncMiddleware(async (req, res, next) => {
   if (req.body.company) req.body.slug = slugify(req.body.company, { lower: true });
 
   const job = await Job.findOneAndUpdate(
-    { _id: jobID, createdBy: userID },
+    { _id: jobId, createdBy: userId },
     req.body,
     {
       new: true,
