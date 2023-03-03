@@ -16,7 +16,7 @@ import dotenv from 'dotenv';
 import jobRouter from './routes/jobs.js';
 import userRouter from './routes/users.js';
 import NotFoundError from './errors/notFound.js';
-import globalErrorHandler from './middlewares/errorControllers.js';
+import globalErrorHandler from './middlewares/errors.js';
 
 dotenv.config({ path: './variables.env' });
 const swaggerDocument = YAML.load('./swagger.yaml');
