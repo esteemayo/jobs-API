@@ -7,7 +7,6 @@ import { StatusCodes } from 'http-status-codes';
 import User from '../models/User.js';
 import AppError from '../errors/appError.js';
 import sendEmail from '../utils/email.js';
-import ForbiddenError from '../errors/forbidden.js';
 import NotFoundError from '../errors/notFound.js';
 import asyncMiddleware from '../utils/asyncMiddleware.js';
 import UnauthenticatedError from '../errors/unauthenticated.js';
