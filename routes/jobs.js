@@ -13,7 +13,7 @@ router.route('/').get(jobController.getAllJobs).post(jobController.createJob);
 
 router
   .route('/:id')
-  .get(jobController.getJob)
+  .get(jobController.getJobById)
   .patch(jobController.updateJob)
   .delete(jobController.deleteJob);
 
