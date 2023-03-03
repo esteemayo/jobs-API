@@ -102,6 +102,8 @@ export const forgotPassword = asyncMiddleware(async (req, res, next) => {
 });
 
 export const resetPassword = asyncMiddleware(async (req, res, next) => {
+  const { password, confirmPassword } = req.body;
+
   const hashedToken = crypto
     .createHash('sha256')
     .update(req.params.token)
