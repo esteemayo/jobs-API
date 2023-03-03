@@ -1,5 +1,5 @@
 import crypto from 'crypto';
-import jwt from 'jsonwebtoken';
+import _ from 'lodash';
 import { promisify } from 'util';
 import { StatusCodes } from 'http-status-codes';
 
