@@ -105,7 +105,7 @@ export const updateJob = asyncMiddleware(async (req, res, next) => {
   );
 
   if (!job) {
-    return next(new NotFoundError(`No job found with that ID: ${jobID}`));
+    return next(new NotFoundError(`No job found with that ID: ${jobId}`));
   }
 
   res.status(StatusCodes.OK).json({
