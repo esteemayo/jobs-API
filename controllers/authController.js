@@ -12,7 +12,7 @@ import NotFoundError from '../errors/notFound.js';
 import asyncMiddleware from '../utils/asyncMiddleware.js';
 import UnauthenticatedError from '../errors/unauthenticated.js';
 import BadRequestError from '../errors/badRequest.js';
-import createSendToken from '../middlewares/createSendToken.js';
+import createSendToken from '../utils/createSendToken.js';
 
 export const register = asyncMiddleware(async (req, res, next) => {
   const userInputs = _.pick(req.body, [
