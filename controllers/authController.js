@@ -1,6 +1,7 @@
 import crypto from 'crypto';
 import _ from 'lodash';
 import { promisify } from 'util';
+import jwt from 'jsonwebtoken';
 import { StatusCodes } from 'http-status-codes';
 
 import User from '../models/User.js';
