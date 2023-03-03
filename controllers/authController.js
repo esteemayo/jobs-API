@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import crypto from 'crypto';
 import jwt from 'jsonwebtoken';
 import { promisify } from 'util';
