@@ -7,8 +7,6 @@ import AppError from '../errors/appError.js';
 import sendEmail from '../utils/email.js';
 import NotFoundError from '../errors/notFound.js';
 import UnauthenticatedError from '../errors/unauthenticated.js';
-import asyncMiddleware from '../utils/asyncMiddleware.js';
-import BadRequestError from '../errors/badRequest.js';
 import createSendToken from '../utils/createSendToken.js';
 
 export const register = asyncMiddleware(async (req, res, next) => {
