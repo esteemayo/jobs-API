@@ -48,4 +48,4 @@ export const protect = asyncMiddleware(async (req, res, next) => {
   // grant access to protected routes
   req.user = currentUser;
   next();
-})
+});
