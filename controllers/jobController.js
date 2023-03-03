@@ -27,7 +27,7 @@ export const getAllJobs = asyncMiddleware(async (req, res, next) => {
   });
 });
 
-export const getJob = asyncMiddleware(async (req, res, next) => {
+export const getJobById = asyncMiddleware(async (req, res, next) => {
   const {
     user: { id: userID },
     params: { id: jobID },
