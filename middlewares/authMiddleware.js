@@ -12,7 +12,6 @@ export const protect = asyncMiddleware(async (req, res, next) => {
   const authHeader = req.headers.authorization;
   if (authHeader && authHeader.startsWith('Bearer')) {
     token = authHeader.split(' ')[1];
-    // console.log(token);
   }
 
   if (!token) {
