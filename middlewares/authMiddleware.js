@@ -2,7 +2,6 @@ import { promisify } from 'util';
 import jwt from 'jsonwebtoken';
 
 import User from '../models/User.js';
-import asyncMiddleware from '../utils/asyncMiddleware.js';
 import UnauthenticatedError from '../errors/unauthenticated.js';
 
 export const protect = asyncMiddleware(async (req, res, next) => {
