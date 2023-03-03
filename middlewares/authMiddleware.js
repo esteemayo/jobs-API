@@ -9,7 +9,6 @@ import asyncMiddleware from '../utils/asyncMiddleware.js';
 export const protect = asyncMiddleware(async (req, res, next) => {
   // getting token and check if it's there
   let token;
-
   const authHeader = req.headers.authorization;
   if (authHeader && authHeader.startsWith('Bearer')) {
     token = authHeader.split(' ')[1];
