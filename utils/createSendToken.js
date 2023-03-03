@@ -12,7 +12,7 @@ const createSendToken = (user, statusCode, req, res) => {
   });
 
   // remove password from output
-  user.password = undefined;
+  const { password, role, ...rest } = user._doc;
 
   res.status(statusCode).json({
     status: 'success',
