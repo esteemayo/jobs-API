@@ -1,3 +1,4 @@
+import slugify from 'slugify';
 import { StatusCodes } from 'http-status-codes';
 
 import Job from '../models/Job.js';
