@@ -34,8 +34,8 @@ export const getJobById = asyncMiddleware(async (req, res, next) => {
   } = req;
 
   const job = await Job.findOne({
-    _id: jobID,
-    createdBy: userID,
+    _id: jobId,
+    createdBy: userId,
   });
 
   if (!job) {
