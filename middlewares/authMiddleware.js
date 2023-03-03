@@ -4,3 +4,4 @@ import { StatusCodes } from 'http-status-codes';
 
 import User from '../models/User.js';
 import asyncMiddleware from '../utils/asyncMiddleware.js';
+import UnauthenticatedError from '../errors/unauthenticated.js';
