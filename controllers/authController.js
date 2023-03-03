@@ -126,6 +126,8 @@ export const resetPassword = asyncMiddleware(async (req, res, next) => {
 });
 
 export const updatePassword = asyncMiddleware(async (req, res, next) => {
+  const { password, confirmPassword, currentPassword } = req.body;
+
   const user = await User.findById(req.user.id).select('+password');
 
   if (!(await user.comparePassword(req.body.currentPassword))) {
