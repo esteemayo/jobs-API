@@ -130,7 +130,7 @@ export const updatePassword = asyncMiddleware(async (req, res, next) => {
 
   const user = await User.findById(req.user.id).select('+password');
 
-  if (!(await user.comparePassword(req.body.currentPassword))) {
+  if (!(await user.comparePassword(currentPassword))) {
     return next(new UnauthenticatedError('Your current password is wrong'));
   }
 
