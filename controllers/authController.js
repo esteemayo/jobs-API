@@ -45,8 +45,6 @@ export const login = asyncMiddleware(async (req, res, next) => {
   createSendToken(user, StatusCodes.OK, req, res);
 });
 
-
-
 export const forgotPassword = asyncMiddleware(async (req, res, next) => {
   const { email } = req.body;
 
