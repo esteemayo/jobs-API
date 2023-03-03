@@ -14,7 +14,6 @@ import dotenv from 'dotenv';
 
 // routes
 import jobRouter from './routes/jobs.js';
-import userRouter from './routes/users.js';
 import NotFoundError from './errors/notFound.js';
 import errorHandlerMiddleware from './middlewares/errors.js';
 
