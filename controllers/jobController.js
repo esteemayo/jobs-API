@@ -116,8 +116,8 @@ export const updateJob = asyncMiddleware(async (req, res, next) => {
 
 export const deleteJob = asyncMiddleware(async (req, res, next) => {
   const {
-    user: { id: userID },
-    params: { id: jobID },
+    user: { id: userId },
+    params: { id: jobId },
   } = req;
 
   const job = await Job.findOneAndDelete({
