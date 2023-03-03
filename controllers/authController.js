@@ -134,8 +134,8 @@ export const updatePassword = asyncMiddleware(async (req, res, next) => {
     return next(new UnauthenticatedError('Your current password is wrong'));
   }
 
-  user.password = req.body.password;
-  user.confirmPassword = req.body.confirmPassword;
+  user.password = password;
+  user.confirmPassword = confirmPassword;
   await user.save();
 
   createSendToken(user, StatusCodes.OK, req, res);
