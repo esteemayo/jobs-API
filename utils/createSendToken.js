@@ -21,8 +21,8 @@ const createSendToken = (user, statusCode, req, res) => {
 
   res.status(statusCode).json({
     status: 'success',
-    token,
-    ...user._doc,
+    details,
+    role,
   });
 };
 
