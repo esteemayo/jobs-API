@@ -14,7 +14,7 @@ router.post('/forgot-password', authController.forgotPassword);
 
 router.post('/reset-password/:token', authController.resetPassword);
 
-router.use(authController.protect);
+router.use(authMiddleware.protect);
 
 router.patch('/update-user-password', authController.updatePassword);
 
