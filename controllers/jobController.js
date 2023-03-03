@@ -82,8 +82,8 @@ export const createJob = asyncMiddleware(async (req, res, next) => {
 
 export const updateJob = asyncMiddleware(async (req, res, next) => {
   const {
-    user: { id: userID },
-    params: { id: jobID },
+    user: { id: userId },
+    params: { id: jobId },
     body: { company, position },
   } = req;
 
