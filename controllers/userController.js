@@ -2,6 +2,7 @@ import _ from 'lodash';
 import { StatusCodes } from 'http-status-codes';
 
 import User from '../models/User.js';
+import Job from '../models/Job.js';
 import BadRequestError from '../errors/badRequest.js';
 import factory from './handlerFactory.js';
 import asyncMiddleware from '../utils/asyncMiddleware.js';
