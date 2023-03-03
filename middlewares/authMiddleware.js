@@ -10,6 +10,7 @@ export const protect = asyncMiddleware(async (req, res, next) => {
   // getting token and check if it's there
   let token;
   const authHeader = req.headers.authorization;
+
   if (authHeader && authHeader.startsWith('Bearer')) {
     token = authHeader.split(' ')[1];
   } else if (req.cookies.jwtToken) {
