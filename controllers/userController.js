@@ -1,7 +1,6 @@
 import _ from 'lodash';
 import { StatusCodes } from 'http-status-codes';
 
-import Job from '../models/Job.js';
 import User from '../models/User.js';
 import BadRequestError from '../errors/badRequest.js';
 import factory from './handlerFactory.js';
