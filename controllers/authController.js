@@ -62,6 +62,7 @@ export const forgotPassword = asyncMiddleware(async (req, res, next) => {
   const resetURL = `${req.protocol}://${req.get(
     'host'
   )}/api/v1/users/reset-password/${resetToken}`;
+
   const message = `
     Forgot your password? Submit a PATCH request with your new password and 
     confirmPassword to: ${resetURL}.\nIf you didn't forget your password, 
