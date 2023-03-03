@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 
 import User from '../models/User.js';
 import UnauthenticatedError from '../errors/unauthenticated.js';
+import asyncMiddleware from '../utils/asyncMiddleware.js';
 
 export const protect = asyncMiddleware(async (req, res, next) => {
   // getting token and check if it's there
