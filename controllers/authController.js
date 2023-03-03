@@ -118,8 +118,8 @@ export const resetPassword = asyncMiddleware(async (req, res, next) => {
     return next(new BadRequestError('Token is invalid or has expired'));
   }
 
-  user.password = req.body.password;
-  user.confirmPassword = req.body.confirmPassword;
+  user.password = password;
+  user.confirmPassword = confirmPassword;
   user.resetPasswordToken = undefined;
   user.resetPasswordExpires = undefined;
   await user.save();
