@@ -56,7 +56,7 @@ export const getJobBySlug = asyncMiddleware(async (req, res, next) => {
 
   const job = await Job.findOne({
     slug: slug,
-    createdBy: userID,
+    createdBy: userId,
   });
 
   if (!job) {
