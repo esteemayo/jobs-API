@@ -32,7 +32,7 @@ router
 router
   .route('/:id')
   .get(userController.getUser)
-  .patch(authController.restrictTo('admin'), userController.updateUser)
-  .delete(authController.restrictTo('admin'), userController.deleteUser);
+  .patch(authMiddleware.restrictTo('admin'), userController.updateUser)
+  .delete(authMiddleware.restrictTo('admin'), userController.deleteUser);
 
 export default router;
