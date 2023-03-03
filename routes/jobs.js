@@ -5,7 +5,7 @@ import * as authMiddleware from '../middlewares/authMiddleware.js';
 
 const router = express.Router();
 
-router.use(authController.protect);
+router.use(authMiddleware.protect);
 
 router.get('/details/:slug', jobController.getJobBySlug);
 
