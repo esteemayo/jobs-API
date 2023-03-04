@@ -23,7 +23,7 @@ export const getAll = (Model) =>
     });
   });
 
-export const getOne = (Model, popOptions) =>
+export const getOneById = (Model, popOptions) =>
   asyncMiddleware(async (req, res, next) => {
     const { id: docID } = req.params;
 
