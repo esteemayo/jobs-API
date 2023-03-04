@@ -27,6 +27,10 @@ const app = express();
 // global middlewares
 app.set('trust proxy', 1);
 
+if (!process.env.JWT_SECRET) {
+  process.exit(1);
+}
+
 // implement CORS
 app.use(cors());
 // access-control-allow-origin
