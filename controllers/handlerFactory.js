@@ -77,7 +77,7 @@ export const createOne = (Model) =>
 
 export const updateOne = (Model) =>
   asyncMiddleware(async (req, res, next) => {
-    const { id: docID } = req.params;
+    const { id: docId } = req.params;
 
     const doc = await Model.findByIdAndUpdate(docID, req.body, {
       new: true,
