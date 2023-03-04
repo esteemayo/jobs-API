@@ -55,6 +55,6 @@ export const createUser = (req, res) => {
 };
 
 export const getAllUsers = factory.getAll(User);
-export const getUser = factory.getOne(User);
+export const getUser = factory.getOneById(User);
 export const updateUser = factory.updateOne(User);
 export const deleteUser = factory.deleteOne(User);
