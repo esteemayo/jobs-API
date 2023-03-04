@@ -24,7 +24,7 @@ export const register = asyncMiddleware(async (req, res, next) => {
   const user = await User.create({ ...userInputs });
 
   if (user) {
-  createSendToken(user, StatusCodes.CREATED, req, res);
+    createSendToken(user, StatusCodes.CREATED, req, res);
   }
 });
 
