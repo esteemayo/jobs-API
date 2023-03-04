@@ -27,7 +27,7 @@ export const getOneById = (Model, popOptions) =>
   asyncMiddleware(async (req, res, next) => {
     const { id: docId } = req.params;
 
-    let query = Model.findById(docID);
+    let query = Model.findById(docId);
     if (popOptions) query = query.populate(popOptions);
 
     const doc = await query;
