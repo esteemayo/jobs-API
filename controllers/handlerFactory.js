@@ -100,7 +100,7 @@ export const deleteOne = (Model) =>
   asyncMiddleware(async (req, res, next) => {
     const { id: docId } = req.params;
 
-    const doc = await Model.findByIdAndDelete(docID);
+    const doc = await Model.findByIdAndDelete(docId);
 
     if (!doc) {
       return next(
