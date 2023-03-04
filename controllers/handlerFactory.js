@@ -98,7 +98,7 @@ export const updateOne = (Model) =>
 
 export const deleteOne = (Model) =>
   asyncMiddleware(async (req, res, next) => {
-    const { id: docID } = req.params;
+    const { id: docId } = req.params;
 
     const doc = await Model.findByIdAndDelete(docID);
 
