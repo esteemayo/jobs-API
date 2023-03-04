@@ -79,7 +79,7 @@ export const updateOne = (Model) =>
   asyncMiddleware(async (req, res, next) => {
     const { id: docId } = req.params;
 
-    const doc = await Model.findByIdAndUpdate(docID, req.body, {
+    const doc = await Model.findByIdAndUpdate(docId, req.body, {
       new: true,
       runValidators: true,
     });
