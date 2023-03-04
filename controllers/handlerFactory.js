@@ -117,7 +117,7 @@ export const deleteOne = (Model) =>
 const factory = {
   getAll,
   getOneById,
-  getSlug,
+  getOneBySlug,
   createOne,
   updateOne,
   deleteOne,
