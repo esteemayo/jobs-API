@@ -85,7 +85,9 @@ app.use((req, res, next) => {
 app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.get('/', (req, res) => {
-  res.send('<h1>Jobs API</h1><a href="/api-docs">Documentation</a>');
+  res
+    .status(StatusCodes.OK)
+    .send('<h1>Jobs API</h1><a href="/api-docs">Documentation</a>');
 });
 
 // api routes
