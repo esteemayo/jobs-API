@@ -17,7 +17,7 @@ import { StatusCodes } from 'http-status-codes';
 import jobRouter from './routes/jobs.js';
 import NotFoundError from './errors/notFound.js';
 import userRouter from './routes/users.js';
-import errorHandlerMiddleware from './middlewares/errors.js';
+import errorHandlerMiddleware from './middlewares/errorHandler.js';
 
 dotenv.config({ path: './variables.env' });
 const swaggerDocument = YAML.load('./swagger.yaml');
