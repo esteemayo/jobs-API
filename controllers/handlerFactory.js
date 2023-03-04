@@ -1,7 +1,6 @@
 import { StatusCodes } from 'http-status-codes';
 
 import APIFeatures from '../utils/apiFeatures.js';
-import NotFoundError from '../errors/notFound.js';
 import asyncMiddleware from '../utils/asyncMiddleware.js';
 
 export const getAll = (Model) =>
