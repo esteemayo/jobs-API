@@ -44,7 +44,7 @@ export const getOne = (Model, popOptions) =>
     });
   });
 
-export const getSlug = (Model, popOptions) =>
+export const getOneBySlug = (Model, popOptions) =>
   asyncMiddleware(async (req, res, next) => {
     const { slug } = req.params;
 
