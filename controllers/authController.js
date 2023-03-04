@@ -25,6 +25,7 @@ export const register = asyncMiddleware(async (req, res, next) => {
 
   if (user) {
   createSendToken(user, StatusCodes.CREATED, req, res);
+  }
 });
 
 export const login = asyncMiddleware(async (req, res, next) => {
