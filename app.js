@@ -11,6 +11,7 @@ import swaggerUi from 'swagger-ui-express';
 import YAML from 'yamljs';
 import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
+import { StatusCodes } from 'http-status-codes';
 
 // routes
 import jobRouter from './routes/jobs.js';
