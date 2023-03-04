@@ -104,7 +104,7 @@ export const deleteOne = (Model) =>
 
     if (!doc) {
       return next(
-        new NotFoundError(`No document found with that ID: ${docID}`)
+        new NotFoundError(`No document found with that ID: ${docId}`)
       );
     }
 
